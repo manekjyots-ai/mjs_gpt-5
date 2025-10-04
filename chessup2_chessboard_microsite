@@ -1,0 +1,34 @@
+# Importing the libraries necessary
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# The API key is stored in a local .env file, so that it is not opennly visible
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Asking model to generate a response
+
+content = f"""
+  Generate code for a Flask microsite in Python for the ChessUp 2 board.
+  The microsite should display:
+  1. main features listed on the website,
+  2. an AI-generated product image based on those features,
+  3. price,
+  4. availability,
+  5. an add to cart button,
+  6. customer reviews section containing a few reviews.
+  """
+  
+response = client.chat.completions.create(
+    model="gpt-5",
+    messages=[
+        {"role": "user", "content": content}
+    ],
+    temperature=0.5
+)
+
+# Print the generated code
+
+print(response.choices[0].message.content)
