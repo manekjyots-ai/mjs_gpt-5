@@ -12,6 +12,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 content = f"""
   Generate code for a Flask microsite in Python for the ChessUp 2 board.
+  Copy the theme for the microsite from the ChessUp website.
   The microsite should display:
   1. main features listed on the website,
   2. an AI-generated product image based on those features,
